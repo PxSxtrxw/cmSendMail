@@ -3,12 +3,12 @@ const nodemailer = require('nodemailer');
 const { infoLogger, errorLogger } = require('./logger'); 
 
 const transporter = nodemailer.createTransport({
-    host: 'mail.cmsistemas.com.py',
-    port: 465,
+    host: 'aqui va el host deseado',
+    port: "tu puerto",
     secure: true,
     auth: {
-        user: 'ppaiva@cmsistemas.com.py',
-        pass: 'ZGsQ-5ROsyws'
+        user: 'correodestinatario@ejem.com',
+        pass: 'contraseña'
     },
     tls: {
         rejectUnauthorized: false
@@ -28,7 +28,7 @@ const server = http.createServer((req, res) => {
             const jsonData = JSON.parse(body); 
 
             const mailOptions = {
-                from: 'ppaiva@cmsistemas.com.py',
+                from: 'correodestinatario@ejem.com',
                 to: jsonData.to,
                 cc: jsonData.cc,
                 bcc: jsonData.bcc,
