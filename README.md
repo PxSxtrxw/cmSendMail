@@ -20,7 +20,10 @@ npm install http
 npm install nodemailer
 ```
 ```bash
-npm install winston
+npm install winston 
+```
+```bash
+npm install dotenv
 ```
 ## Configuración
 
