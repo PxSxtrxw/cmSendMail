@@ -9,3 +9,5 @@
         "C:ruta/a/tu/archivo/adjunto/ejemplo.txt",
     ]
 }
+
+//asegurate de eliminar los () al momento de configurar el Json
