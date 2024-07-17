@@ -168,7 +168,7 @@ server.on('error', (err) => {
     errorLogger.error(serverErrorMessage);
 });
 
-const PORT = process.env.PORT || 3060;
+const PORT = process.env.PORT ;
 server.listen(PORT, () => {
     const serverStartMessage = `Servidor HTTP escuchando en el puerto ${PORT}`;
     console.log(serverStartMessage);
