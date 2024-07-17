@@ -24,21 +24,21 @@ npm install winston
 ```
 ## Configuración
 
-Antes de ejecutar el servidor, asegúrese de configurar adecuadamente la direccion de correo electronico donde se ara la solicitud de autenticacion SMTP, en el campo ussers y pass.
+Antes de ejecutar el servidor, asegúrese de configurar adecuadamente la direccion de correo electronico donde se realizara la solicitud de autenticacion SMTP, tambien los demas campos necesarios en el archivo  `.env` , en el campo MAIL_USER, MAIL_PASS, etc
 
 
 #### Componentes Principales:
 
 1. **Configuración de Nodemailer:**
-   - Utiliza Nodemailer para configurar el transporte SMTP hacia el servidor de un correo en especifico. Se autentica con credenciales específicas (`user` y `pass`).
+   - Utiliza Nodemailer para configurar el transporte SMTP hacia el servidor de un correo en especifico.
 
 2. **Creación del Servidor HTTP:**
-   - Utiliza el módulo `http` de Node.js para crear un servidor HTTP que escucha en un puerto específico (por defecto en el puerto 4000 o según la variable de entorno `PORT` definida).
+   - Utiliza el módulo `http` de Node.js para crear un servidor HTTP que escucha en un puerto específico (por defecto en el puerto 3060 o según la variable de entorno `PORT` definida).
    - Maneja las solicitudes recibidas mediante el evento `request` del servidor, capturando los datos del cuerpo de la solicitud JSON y procesándolos para enviar correos electrónicos.
 
 3. **Manejo de Solicitudes HTTP:**
    - Cuando se recibe una solicitud HTTP POST con datos JSON, el servidor convierte el cuerpo de la solicitud en una cadena y la parsea a JSON.
-   - Configura las opciones del correo (remitente, destinatario, copia carbono, copia oculta, asunto y contenido del correo) basadas en los datos JSON recibidos.
+   - Configura las opciones del correo (remitente, destinatario, copia carbono, copia oculta, asunto, contenido del correo, cuerpo HMTL, y adjuntos) basadas en los datos JSON recibidos.
 
 4. **Envío de Correo Electrónico:**
    - Utiliza las opciones configuradas para enviar un correo electrónico utilizando el transporte SMTP configurado con Nodemailer.
@@ -58,13 +58,7 @@ Para iniciar el servidor de desarrollo, use el siguiente comando:
 ```bash
 node server
 ```
-El servidor se iniciará en http://localhost:4000.
-
-## Logger
-
-el servidor guardara los loggers en una carpte llamada logs y la actividad de errores en `errorLogger.log` y la informacion de toda la actividad del servidor en `eventLogger.log`
-
-
+El servidor se iniciará en http://localhost:3060.
 
 
 
