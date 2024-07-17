@@ -1,38 +1,39 @@
-const { createLogger, transports, format } = require('winston');
+const { createLogger, format, transports } = require('winston');
+const { combine, timestamp, printf } = format;
+const fs = require('fs');
 const path = require('path');
 
-const logsDirectory = path.join(__dirname, 'logs');
-
-const fs = require('fs');
-if (!fs.existsSync(logsDirectory)) {
-    fs.mkdirSync(logsDirectory);
+// Crear la carpeta "logs" si no existe
+const logDir = 'logs';
+if (!fs.existsSync(logDir)) {
+    fs.mkdirSync(logDir);
 }
 
-const customFormat = format.printf(info => {
-    return `${info.timestamp} - ${info.level.toUpperCase()} - ${info.message}`;
+const logFormat = printf(({ level, message, timestamp }) => {
+    return `${timestamp} [${level}]: ${message}`;
 });
 
 const infoLogger = createLogger({
     level: 'info',
-    format: format.combine(
-        format.timestamp(),
-        customFormat
+    format: combine(
+        timestamp(),
+        logFormat
     ),
     transports: [
         new transports.Console(),
-        new transports.File({ filename: path.join(logsDirectory, 'eventLogger.log'), level: 'info', maxsize: 5242880, maxFiles: 5 }) // 5MB max size per file, 5 files max
+        new transports.File({ filename: path.join(logDir, 'infoLogger.log') })
     ]
 });
 
 const errorLogger = createLogger({
     level: 'error',
-    format: format.combine(
-        format.timestamp(),
-        customFormat
+    format: combine(
+        timestamp(),
+        logFormat
     ),
     transports: [
         new transports.Console(),
-        new transports.File({ filename: path.join(logsDirectory, 'errorLogger.log'), level: 'error', maxsize: 5242880, maxFiles: 5 }) // 5MB max size per file, 5 files max
+        new transports.File({ filename: path.join(logDir, 'errorLogger.log') })
     ]
 });
 
