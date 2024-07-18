@@ -52,7 +52,7 @@ Antes de ejecutar el servidor, asegúrese de configurar adecuadamente la direcci
 Para iniciar el servidor de desarrollo, use el siguiente comando:
 
 ```bash
-python server
+server.py
 ```
 El servidor se iniciará en http://localhost:{PORT}
 
