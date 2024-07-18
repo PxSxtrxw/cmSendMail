@@ -1,29 +1,22 @@
-# cmSendMail (Programa Node.js para Envío de Correos vía HTTP)
+# cmSendMail (Programa Python para Envío de Correos vía HTTP)
 
-Este programa Node.js está diseñado para crear un servidor HTTP que escucha solicitudes JSON para enviar correos electrónicos utilizando Nodemailer.
+Este programa Python está diseñado para crear un servidor HTTP que escucha solicitudes JSON para enviar correos electrónicos utilizando el modulo email de Python.
 
 ## Requerimientos
 
 Para utilizar este código, es necesario tener instalado:
 
-- Node.js
-- npm (Node Package Manager)
+- Python 3.12.3
 
 ## Instalación
 
 Para instalar las dependencias necesarias, ejecute el siguiente comando en la terminal:
 
 ```bash
-npm install http
+pip install python-dotenv
 ```
 ```bash
-npm install nodemailer
-```
-```bash
-npm install winston 
-```
-```bash
-npm install dotenv
+pip install flask
 ```
 ## Configuración
 
@@ -33,7 +26,7 @@ Antes de ejecutar el servidor, asegúrese de configurar adecuadamente la direcci
 #### Componentes Principales:
 
 1. **Configuración de Nodemailer:**
-   - Utiliza Nodemailer para configurar el transporte SMTP hacia el servidor de un correo en especifico.
+   - Utiliza el modulo email.mime para configurar el transporte SMTP hacia el servidor de un correo en especifico.
 
 2. **Creación del Servidor HTTP:**
    - Utiliza el módulo `http` de Node.js para crear un servidor HTTP que escucha en un puerto específico (por defecto en el puerto 3060 o según la variable de entorno `PORT` definida).
@@ -44,7 +37,7 @@ Antes de ejecutar el servidor, asegúrese de configurar adecuadamente la direcci
    - Configura las opciones del correo (remitente, destinatario, copia carbono, copia oculta, asunto, contenido del correo, cuerpo HMTL, y adjuntos) basadas en los datos JSON recibidos.
 
 4. **Envío de Correo Electrónico:**
-   - Utiliza las opciones configuradas para enviar un correo electrónico utilizando el transporte SMTP configurado con Nodemailer.
+   - Utiliza las opciones configuradas para enviar un correo electrónico utilizando el transporte SMTP configurado con email.mime .
    - Registra eventos de éxito o error del envío del correo utilizando los loggers `infoLogger` y `errorLogger` importados desde el archivo `logger.js`.
 
 5. **Respuestas HTTP:**
@@ -59,9 +52,9 @@ Antes de ejecutar el servidor, asegúrese de configurar adecuadamente la direcci
 Para iniciar el servidor de desarrollo, use el siguiente comando:
 
 ```bash
-node server
+python server
 ```
-El servidor se iniciará en http://localhost:3060.
+El servidor se iniciará en http://localhost:{PORT}
 
 
 
