@@ -25,11 +25,11 @@ Antes de ejecutar el servidor, asegúrese de configurar adecuadamente la direcci
 
 #### Componentes Principales:
 
-1. **Configuración de Nodemailer:**
+1. **Configuración de email.mime:**
    - Utiliza el modulo email.mime para configurar el transporte SMTP hacia el servidor de un correo en especifico.
 
 2. **Creación del Servidor HTTP:**
-   - Utiliza el módulo `http` de Node.js para crear un servidor HTTP que escucha en un puerto específico (por defecto en el puerto 3060 o según la variable de entorno `PORT` definida).
+   - Utiliza el módulo `flask` de Python para crear un servidor HTTP que escucha en un puerto específico (por defecto en el puerto 3060 o según la variable de entorno `PORT` definida).
    - Maneja las solicitudes recibidas mediante el evento `request` del servidor, capturando los datos del cuerpo de la solicitud JSON y procesándolos para enviar correos electrónicos.
 
 3. **Manejo de Solicitudes HTTP:**
